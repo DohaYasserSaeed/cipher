@@ -1,0 +1,81 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std ;
+void check_len(string row_1 ,string row_2 , string row_3){
+    int repeat ;
+    cout << "\nYour statement is '" << row_1 << row_2 << row_3  << "'" ; // print statement after ciphering
+    cout << "\nPress '1' to start again (another thing will exit):"; // another thing will exit
+    char again ;
+    cin >> again ;
+    cin.ignore() ;
+    if (again == '1') {// start again
+            repeat = 1 ;
+        }
+    else{ // exit a program 
+            cout << "Thanks for using my program " ;
+            repeat = 0 ;
+            exit(0) ;
+        }
+}
+void cipher(){
+            string row_1 , row_2, row_3,statement ;//declare variables
+            cout << "\nPlease enter your statement :" ; // get message to ciphering
+            //cin.ignore() ; // to ignore the last input
+            getline (cin , statement) ;
+            int len = statement.length() ; // length of  the message
+            int n = 0 ;
+            while (true) {
+            if (len == 0){
+                check_len(row_1 , row_2, row_3) ;
+                break ;
+            }
+            else{
+                row_1 += statement[n]; // add the selected character to the first row
+                len -- ;
+                if (len == 0) {// check if the statment finishes
+                    check_len(row_1 , row_2, row_3) ;
+                    break ;
+                }
+                else {
+                    row_2 += statement[n+1] ; // add the character to the second row
+                    len -- ;
+                    if (len == 0) {
+                        check_len(row_1 , row_2, row_3) ;
+                        break ;
+                    }
+                    else {
+                        row_3 += statement[n+2] ;//add the character to the third row
+                        len -- ;
+                        if (len == 0) {// check if statment finishes
+                           check_len(row_1 , row_2, row_3) ;
+                           break ;
+                        }
+                        else {
+                            row_2 += statement[n+3] ; //add the character to the second row
+                            len -- ;
+                            if (len == 0){
+                                check_len(row_1 , row_2, row_3) ;
+                                break ;
+                            } 
+                        }
+                    }     
+                }
+            n += 4 ; 
+        }
+    }
+}
+int main()
+{
+    int repeat = 1 ;
+    do
+    {
+        char option ;
+        cout << "\n===========================\n" ;
+        cout << "welcome to my cipher program\n" ; 
+        cout << "Note :- the key value is 3\n"; // 3 rows
+        cipher() ;
+    }
+    while (repeat == 1) ; // repeat the program again
+    return 0 ;
+}
