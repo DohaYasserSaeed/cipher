@@ -1,0 +1,19 @@
+def Encryption():
+    alphapet=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    var = input("Encryption is a very very important topic,\nThis program will help to change your data so that enemies do not know what it is.\n\nEnter a Data you want to change :")
+    Data=''
+    for i in var :
+        if i in alphapet:
+            if i == 'Z':
+                i='A'
+                Data+=i
+            elif i == 'z':
+                i='a'
+                Data+=i
+            else:
+                n=alphapet.index(i)
+                Data+=alphapet[n+1]
+        else:
+            Data+=i
+    print(Data)
+Encryption()
